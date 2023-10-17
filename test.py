@@ -39,7 +39,21 @@ def send_data_to_server(fileName, region):
 capture = cv2.VideoCapture(0)
 count = 0
 frameCount = 0
-fileNumber = 0
+fileNumber = 1;
+
+# Make a GET request to the Flask program to get the largest id
+response = requests.get('http://localhost:5000/get_largest_id')
+
+# Check if the response was successful
+if response.status_code == 200:
+    # Get the largest id from the response
+    largest_id = response.json()
+
+    # Set fileNumber to the largest id + 1
+    if largest_id is not None:
+        fileNumber = largest_id + 1
+
+
 countdown = 0
 countdown2 = 0
 DEFAULT_FILE_NAME = "/var/www/html/event"

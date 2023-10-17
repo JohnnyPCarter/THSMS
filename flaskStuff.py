@@ -24,5 +24,14 @@ def add_data():
     conn.close()
     return 'Data added successfully'
 
+@app.route('/get_largest_id', methods=['GET'])
+def get_largest_id():
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+    cursor.execute('SELECT MAX(id) FROM files;')
+    largest_id = cursor.fetchone()[0]
+    conn.close()
+    return jsonify(largest_id)
+
 if __name__ == '__main__':
     app.run(port=5000)
