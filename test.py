@@ -79,7 +79,7 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
-            print("event" + str(fileNumber) + " -- ROI1 -- frameCount: " + frameCount )
+            print("event" + str(fileNumber) + " -- ROI1 -- frameCount: " + str(frameCount) )
 
             fileNumber += 1
 
@@ -100,7 +100,7 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
-            print("event" + str(fileNumber) + " -- ROI2 -- frameCount: " + frameCount )
+            print("event" + str(fileNumber) + " -- ROI2 -- frameCount: " + str(frameCount) )
             fileNumber += 1
 
         countdown2 = 120
