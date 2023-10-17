@@ -59,8 +59,7 @@ while(1):
 
     count = np.count_nonzero(fgmask)
     countRoi2 = np.count_nonzero(fgmaskRoi2)
-    cv2.imshow('Frame', frame)
-    cv2.imshow('Mask', fgmask)
+
 
     currTime = datetime.now()
 
