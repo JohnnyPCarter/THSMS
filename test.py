@@ -11,6 +11,7 @@ count = 0
 frameCount = 0
 fileNumber = 0
 countdown = 0
+countdown2 = 0
 DEFAULT_FILE_NAME = "/var/www/event"
 
 # Define the codec and create VideoWriter object
