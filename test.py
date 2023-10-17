@@ -17,7 +17,7 @@ def send_data_to_server(fileName, region):
     data_to_send = {
     'FileName': fileName,
     'Region': region,
-    'CreatedDate': created_date.strftime('%Y-%m-%d %H:%M:%S')
+    'CreatedDate': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
     # Convert the data to JSON
     data_json = json.dumps(data_to_send)
