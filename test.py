@@ -65,6 +65,7 @@ while(1):
     currTime = datetime.now()
 
     if (frameCount > 3 and count > 5000):
+        print("ROI1" + str(count))
         if countdown == 0:
             temp = "event" + str(fileNumber)
             output_dir = os.path.join(DEFAULT_FILE_NAME, temp)
@@ -86,6 +87,7 @@ while(1):
         countdown = 120
 
     if (frameCount > 3 and countRoi2 > 5000):
+        print("ROI2" + str(countRoi2))
         if countdown2 == 0:
             temp = "event" + str(fileNumber)
             output_dir = os.path.join(DEFAULT_FILE_NAME, temp)
