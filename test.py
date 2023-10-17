@@ -64,7 +64,7 @@ while(1):
 
     currTime = datetime.now()
 
-    if (frameCount > 1 and countRoi2 > 5000):
+    if (frameCount > 3 and count > 5000):
         if countdown == 0:
             temp = "event" + str(fileNumber)
             output_dir = os.path.join(DEFAULT_FILE_NAME, temp)
@@ -79,13 +79,13 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
-            print("event" + str(fileNumber) + " -- ROI1")
+            print("event" + str(fileNumber) + " -- ROI1 -- frameCount: " + frameCount )
 
             fileNumber += 1
 
         countdown = 120
 
-    if (frameCount > 1 and count > 5000):
+    if (frameCount > 3 and countRoi2 > 5000):
         if countdown2 == 0:
             temp = "event" + str(fileNumber)
             output_dir = os.path.join(DEFAULT_FILE_NAME, temp)
@@ -100,7 +100,7 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
-            print("event" + str(fileNumber) + " -- ROI2")
+            print("event" + str(fileNumber) + " -- ROI2 -- frameCount: " + frameCount )
             fileNumber += 1
 
         countdown2 = 120
