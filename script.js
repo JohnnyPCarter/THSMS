@@ -31,7 +31,7 @@ function createEvent(folder) {
 
 const buildZone = document.getElementById('build');
 function loadEvents() {
-    fetch('http://localhost.local:5000/get_data')
+    fetch('http://localhost:5000/get_data')
         .then(response => response.json())
         .then(data => {
             data.forEach(folder => {
