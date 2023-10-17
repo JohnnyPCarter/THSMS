@@ -6,6 +6,36 @@ import os
 from collections import deque
 from datetime import datetime
 
+# This is for the database
+import requests
+import json
+server_url = 'http://localhost:5000/add_data'
+
+
+def send_data_to_server(fileName, region):
+
+    data_to_send = {
+    'FileName': fileName,
+    'Region': region,
+    'CreatedDate': datetime.now()
+    }
+    # Convert the data to JSON
+    data_json = json.dumps(data_to_send)
+
+    # Set the headers to specify that you are sending JSON data
+    headers = {'Content-Type': 'application/json'}
+
+    # Make the POST request
+    response = requests.post(server_url, data=data_json, headers=headers)
+
+    # Check the response
+    if response.status_code == 200:
+        print('Data added successfully')
+    else:
+        print('Error:', response.status_code, response.text)
+
+
+
 capture = cv2.VideoCapture(0)
 count = 0
 frameCount = 0
@@ -81,6 +111,7 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
+            send_data_to_server(temp, 1)
             print("event" + str(fileNumber) + " -- ROI1 -- frameCount: " + str(frameCount) )
 
             fileNumber += 1
@@ -103,6 +134,7 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
+            send_data_to_server(temp, 2)
             print("event" + str(fileNumber) + " -- ROI2 -- frameCount: " + str(frameCount) )
             fileNumber += 1
 
