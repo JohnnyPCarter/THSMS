@@ -35,6 +35,7 @@ if not capture.isOpened():
     exit()
 
 fgbg = cv2.createBackgroundSubtractorMOG2(300, 4000, True)
+fgbg2 = cv2.createBackgroundSubtractorMOG2(300, 4000, True)
 
 x1, y1, x2, y2 = 100, 100, 700, 700
 l1, w1, l2, w2 = 800, 100, 1400, 700
@@ -56,7 +57,7 @@ while(1):
     cv2.rectangle(roi1, (0,0), (700,700), (255,0,0), 2)
 
     fgmask = fgbg.apply(roi1)
-    fgmaskRoi2 = fgbg.apply(roi2)
+    fgmaskRoi2 = fgbg2.apply(roi2)
 
     count = np.count_nonzero(fgmask)
     countRoi2 = np.count_nonzero(fgmaskRoi2)
