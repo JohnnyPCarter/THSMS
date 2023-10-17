@@ -1,4 +1,4 @@
-let source = "./event/";
+let source = "/var/www/html/event/";
 // function to show image when we click on a image
 function showImage(imageSrc) {
     let popupImage = document.getElementById("popupImage");
