@@ -31,14 +31,16 @@ function createEvent(folder) {
 
 const buildZone = document.getElementById('build');
 function loadEvents() {
-    const eventFolders = ['event0','event1','event2','event3','event4'];
-
-    eventFolders.forEach(folder => {
-        
-        const div = createEvent(folder);
-        console.log(div);
-        buildZone.appendChild(div);
-    });
+    fetch('/get_data')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(folder => {
+                const div = createEvent(folder[0]);
+                console.log(div);
+                buildZone.appendChild(div);
+            });
+        })
+        .catch(error => console.error(error));
 }
 
 loadEvents();

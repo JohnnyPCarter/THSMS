@@ -9,7 +9,7 @@ database = "MediaCenter.db"
 def get_data():
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM files ORDER BY CreatedDate DESC LIMIT 10;')
+    cursor.execute('SELECT FileName FROM files ORDER BY CreatedDate DESC LIMIT 10;')
     data = cursor.fetchall()
     conn.close()
     return jsonify(data)
