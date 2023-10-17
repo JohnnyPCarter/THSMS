@@ -5,7 +5,6 @@ import numpy as np
 import os
 from collections import deque
 from datetime import datetime
-import xattr
 
 capture = cv2.VideoCapture(0)
 count = 0
@@ -37,6 +36,7 @@ if not capture.isOpened():
 fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
 x1, y1, x2, y2 = 100, 100, 700, 700
+l1, w1, l2, w2 = 800, 100, 1400, 700
 
 
 while(1):
@@ -50,17 +50,21 @@ while(1):
 
     roi1 = frame[y1:y2, x1:x2]
 
+    roi2 = frame[l1:l2, w1:w2]
+
     cv2.rectangle(roi1, (0,0), (700,700), (255,0,0), 2)
 
     fgmask = fgbg.apply(roi1)
+    fgmaskRoi2 = fgbg.apply(roi2)
 
     count = np.count_nonzero(fgmask)
+    countRoi2 = np.count_nonzero(fgmaskRoi2)
     cv2.imshow('Frame', frame)
     cv2.imshow('Mask', fgmask)
 
     currTime = datetime.now()
 
-    if (frameCount > 1 and count > 5000):
+    if (frameCount > 1 and countRoi2 > 5000):
         if countdown == 0:
             temp = "event" + str(fileNumber)
             output_dir = os.path.join(DEFAULT_FILE_NAME, temp)
@@ -76,24 +80,48 @@ while(1):
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
             fileNumber += 1
-            try:
-                xattr.xattr(video_filename).remove("com.apple.quarantine")
-                
-                xattr.xattr(output_dir).remove("com.apple.metadata:_kMDItemUserTags")
-            except OSError as e:
-                print(e)
 
         countdown = 120
+
+    if (frameCount > 1 and count > 5000):
+        if countdown2 == 0:
+            temp = "event" + str(fileNumber)
+            output_dir = os.path.join(DEFAULT_FILE_NAME, temp)
+            os.makedirs(output_dir, exist_ok=True)
+            video_filename = os.path.join(output_dir, 'video.mp4')
+            out2 = cv2.VideoWriter(video_filename, fourcc, 24.0, size)
+            timer1 = (currTime, output_dir)
+            timer2 = (currTime, output_dir)
+            timer3 = (currTime, output_dir)
+            timer4 = (currTime, output_dir)
+            photoQueue1.append(timer1)
+            photoQueue6.append(timer2)
+            photoQueue12.append(timer3)
+            photoQueue24.append(timer4)
+            fileNumber += 1
+
+        countdown2 = 120
+    
+
+    
 
     if countdown > 0:
         out.write(frame)
 
     if countdown == 1:
         out.release()
-        xattr.xattr(video_filename).remove("com.apple.lastuseddate#PS")
 
     if countdown > 0:
         countdown -= 1
+
+    if countdown2 > 0:
+        out2.write(frame)
+
+    if countdown2 == 1:
+        out2.release()
+
+    if countdown2 > 0:
+        countdown2 -= 1
 
 
     
