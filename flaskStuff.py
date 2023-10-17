@@ -33,5 +33,6 @@ def get_largest_id():
     conn.close()
     return jsonify(largest_id)
 
+
 if __name__ == '__main__':
     app.run(port=5000)
