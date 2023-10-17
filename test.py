@@ -11,7 +11,7 @@ count = 0
 frameCount = 0
 fileNumber = 0
 countdown = 0
-DEFAULT_FILE_NAME = "/usr/local/var/www/event"
+DEFAULT_FILE_NAME = "/var/www/event"
 
 # Define the codec and create VideoWriter object
 width = int(capture.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5)
