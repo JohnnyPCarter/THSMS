@@ -79,6 +79,8 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
+            print("event" + str(fileNumber) + " -- ROI1")
+
             fileNumber += 1
 
         countdown = 120
@@ -98,6 +100,7 @@ while(1):
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
+            print("event" + str(fileNumber) + " -- ROI2")
             fileNumber += 1
 
         countdown2 = 120
@@ -110,6 +113,8 @@ while(1):
 
     if countdown == 1:
         out.release()
+        print("releasing ROI1")
+
 
     if countdown > 0:
         countdown -= 1
@@ -119,6 +124,8 @@ while(1):
 
     if countdown2 == 1:
         out2.release()
+        print("releasing ROI2")
+
 
     if countdown2 > 0:
         countdown2 -= 1
