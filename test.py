@@ -117,7 +117,7 @@ while(1):
 
 
     if countdown > 0:
-        print(countdown + " ROI1")
+        print(str(countdown) + " ROI1")
         countdown -= 1
 
     if countdown2 > 0:
@@ -129,7 +129,7 @@ while(1):
 
 
     if countdown2 > 0:
-        print(countdown2 + " ROI2")
+        print(str(countdown2) + " ROI2")
         countdown2 -= 1
 
 
