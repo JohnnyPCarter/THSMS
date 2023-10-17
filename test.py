@@ -34,7 +34,7 @@ if not capture.isOpened():
     print("Error: Coupld not open camera")
     exit()
 
-fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
+fgbg = cv2.createBackgroundSubtractorMOG2(300, 4000, True)
 
 x1, y1, x2, y2 = 100, 100, 700, 700
 l1, w1, l2, w2 = 800, 100, 1400, 700
