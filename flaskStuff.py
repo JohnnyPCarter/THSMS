@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
 database = "MediaCenter.db"
+CORS(app)
 
 
 @app.route('/get_data', methods=['GET'])
