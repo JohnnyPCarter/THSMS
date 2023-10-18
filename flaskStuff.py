@@ -35,8 +35,8 @@ def get_largest_id():
     conn.close()
     return jsonify(largest_id)
 
-@app.route('/region_data/<region>', methods=['GET'])
-def get_data(region):
+@app.route('/get_data_by_region/<region>', methods=['GET'])
+def get_data_by_region(region):
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
     cursor.execute('SELECT FileName FROM files WHERE Region = ? ORDER BY CreatedDate DESC LIMIT 10;', (region,))
