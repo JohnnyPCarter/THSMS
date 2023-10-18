@@ -1,4 +1,19 @@
 let source = "./event/";
+
+
+function categoryChanged() {
+    var category = document.getElementById("category").value;
+    // Call your function with the selected category
+    // For example:
+    if (category === "all") {
+      loadEvents('get_data');
+    } else if (category === "sink") {
+      loadEvents('get_data/1');
+    } else if (category === "stove-top") {
+        loadEvents('get_data/2');
+    }
+}
+
 // function to show image when we click on a image
 function showImage(imageSrc) {
     let popupImage = document.getElementById("popupImage");
@@ -30,8 +45,9 @@ function createEvent(folder) {
 }
 
 const buildZone = document.getElementById('build');
-function loadEvents() {
-    fetch('http://192.168.1.6:5000/get_data')
+function loadEvents(callType) {
+    
+    fetch('http://192.168.1.6:5000/get_data' )
         .then(response => response.json())
         .then(data => {
             data.forEach(folder => {
@@ -43,4 +59,4 @@ function loadEvents() {
         .catch(error => console.error(error));
 }
 
-loadEvents();
+loadEvents('get_data');
