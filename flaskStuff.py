@@ -34,7 +34,7 @@ def get_largest_id():
     largest_id = cursor.fetchone()[0]
     conn.close()
     return jsonify(largest_id)
-
+'''
 @app.route('/get_dataa_by_region/<region>', methods=['GET'])
 def get_data(region):
     conn = sqlite3.connect(database)
@@ -43,7 +43,7 @@ def get_data(region):
     data = cursor.fetchall()
     conn.close()
     return jsonify(data)
-
+'''
 
 
 if __name__ == '__main__':
