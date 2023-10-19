@@ -83,7 +83,7 @@ print("skiball")
 fgbgg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
 x1, y1, x2, y2 = 0, 5, 350, 200
-l1, w1, l2, w2 = 0, 350, 450, 800
+l1, w1, l2, w2 = 0, 350, 450, 900
 #l1, w1, l2, w2 = 40, 685, 445, 1430
 
 output_dir = ""
