@@ -82,7 +82,7 @@ fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 fgbg2 = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
 x1, y1, x2, y2 = 40, 75, 675, 400
-l1, w1, l2, w2 = 720, 100, 800, 300
+l1, w1, l2, w2 = 40, 410, 750, 750
 
 output_dir = ""
 output_dir2 = ""
