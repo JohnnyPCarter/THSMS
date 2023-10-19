@@ -79,6 +79,7 @@ if not capture.isOpened():
     exit()
 
 fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
+print("skiball")
 fgbg2 = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
 x1, y1, x2, y2 = 40, 75, 675, 400
