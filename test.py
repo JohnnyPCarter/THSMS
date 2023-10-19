@@ -82,7 +82,7 @@ fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 print("skiball")
 fgbgg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
-x1, y1, x2, y2 = 0, 75, 375, 400
+x1, y1, x2, y2 = 0, 55, 350, 400
 l1, w1, l2, w2 = 40, 75, 675, 400
 #l1, w1, l2, w2 = 40, 685, 445, 1430
 
