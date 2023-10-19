@@ -195,25 +195,25 @@ while(1):
 
     
     #3600
-    if (len(photoQueue1) > 0 and (currTime - photoQueue1[0][0]).total_seconds() >= 3):
+    if (len(photoQueue1) > 0 and (currTime - photoQueue1[0][0]).total_seconds() >= 3600):
         photoName = os.path.join(photoQueue1[0][1], 'hour1.png')
         cv2.imwrite(photoName, frame)
         photoQueue1.popleft()
 
     #21600
-    if (len(photoQueue6) > 0 and (currTime - photoQueue6[0][0]).total_seconds() >= 10):
+    if (len(photoQueue6) > 0 and (currTime - photoQueue6[0][0]).total_seconds() >= 21600):
         photoName = os.path.join(photoQueue6[0][1], 'hour6.png')
         cv2.imwrite(photoName, frame)
         photoQueue6.popleft()
 
     #43200
-    if (len(photoQueue12) > 0 and (currTime - photoQueue12[0][0]).total_seconds() >= 20):
+    if (len(photoQueue12) > 0 and (currTime - photoQueue12[0][0]).total_seconds() >= 43200):
         photoName = os.path.join(photoQueue12[0][1], 'hour12.png')
         cv2.imwrite(photoName, frame)
         photoQueue12.popleft()
 
     #86400
-    if (len(photoQueue24) > 0 and (currTime - photoQueue24[0][0]).total_seconds() >= 30):
+    if (len(photoQueue24) > 0 and (currTime - photoQueue24[0][0]).total_seconds() >= 86400):
         photoName = os.path.join(photoQueue24[0][1], 'hour24.png')
         cv2.imwrite(photoName, frame)
         photoQueue24.popleft()
