@@ -80,7 +80,7 @@ if not capture.isOpened():
 
 fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 print("skiball")
-fgbg2 = cv2.createBackgroundSubtractorMOG2(300, 400, True)
+fgbgg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
 x1, y1, x2, y2 = 40, 75, 675, 400
 l1, w1, l2, w2 = 40, 685, 445, 1430
@@ -105,7 +105,7 @@ while(1):
 
 
     fgmask = fgbg.apply(roi1)
-    fgmaskRoi2 = fgbg2.apply(roi2)
+    fgmaskRoi2 = fgbgg.apply(roi2)
 
     count = np.count_nonzero(fgmask)
     countRoi2 = np.count_nonzero(fgmaskRoi2)
