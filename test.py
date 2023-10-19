@@ -114,7 +114,7 @@ while(1):
 
     currTime = datetime.now()
 
-    if (frameCount > 3 and count > 7500):
+    if (frameCount > 3 and count > 500):
         print("ROI1" + str(count))
         if countdown == 0:
             temp = "event" + str(fileNumber)
@@ -140,7 +140,7 @@ while(1):
 
         countdown = 120
 
-    if (frameCount > 3 and countRoi2 > 9000):
+    if (frameCount > 3 and countRoi2 > 500):
         print("ROI2" + str(countRoi2))
         if countdown2 == 0:
             temp = "event" + str(fileNumber)
