@@ -81,7 +81,7 @@ if not capture.isOpened():
 fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 fgbg2 = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
-x1, y1, x2, y2 = 70, 70, 700, 500
+x1, y1, x2, y2 = 50, 70, 675, 400
 l1, w1, l2, w2 = 800, 100, 1400, 700
 
 output_dir = ""
@@ -101,7 +101,7 @@ while(1):
 
     roi2 = frame[l1:l2, w1:w2]
 
-    cv2.rectangle(roi1, (0,0), (700,700), (255,0,0), 2)
+
 
     fgmask = fgbg.apply(roi1)
     fgmaskRoi2 = fgbg2.apply(roi2)
