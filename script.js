@@ -80,10 +80,9 @@ function loadMore() {
     return;
   }
 
-  const scrollPosition = window.innerHeight + window.scrollY;
-  const bodyHeight = document.body.offsetHeight;
 
-  if (scrollPosition >= bodyHeight) {
+
+
     loading = true;
     if (category === "all") {
         fetch(`/get_data_for_pages/${page}/${perPage}`)
@@ -115,10 +114,6 @@ function loadMore() {
         })
         .catch(error => console.error(error));
     }
-
-  }
 }
-
-window.addEventListener('scroll', loadMore);
 
 loadEvents('get_data');
