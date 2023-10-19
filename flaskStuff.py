@@ -54,7 +54,7 @@ def get_data_for_pages_with_regions(page, perPage, region):
     return jsonify(data)
 
 @app.route('/get_data_for_pages/<page:perPage>', methods=['GET'])
-def get_data_for_pages_with_regions(page, perPage):
+def get_data_for_pages(page, perPage):
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
     cursor.execute('SELECT FileName FROM files ORDER BY CreatedDate DESC LIMIT ?, ?;', (page * perPage, perPage))
