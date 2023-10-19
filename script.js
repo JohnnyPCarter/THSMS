@@ -84,7 +84,7 @@ function loadMore() {
 
     loading = true;
     if (category === "all") {
-        fetch(`/get_data_for_pages/${page}/${perPage}`)
+        fetch(`http://192.168.1.6:5000/get_data_for_pages/${page}/${perPage}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(folder => {
@@ -101,7 +101,7 @@ function loadMore() {
         } else if (category === "stove-top") {
             region=2;
         }
-        fetch(`/get_data_for_pages_with_regions/${page}/${perPage}/${region}`)
+        fetch(`http://192.168.1.6:5000/get_data_for_pages_with_regions/${page}/${perPage}/${region}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(folder => {
