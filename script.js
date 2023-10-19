@@ -8,9 +8,9 @@ function categoryChanged() {
     if (category === "all") {
       loadEvents('get_data');
     } else if (category === "sink") {
-      loadEvents('get_data/1');
+      loadEvents('get_data_by_region/1');
     } else if (category === "stove-top") {
-        loadEvents('get_data/2');
+      loadEvents('get_data_by_region/2');
     }
 }
 
@@ -46,10 +46,12 @@ function createEvent(folder) {
 
 const buildZone = document.getElementById('build');
 function loadEvents(callType) {
-    
-    fetch('http://192.168.1.6:5000/get_data' )
+    buildZone.innerHTML = ''; // clear buildZone
+
+    fetch('http://192.168.1.6:5000/' + callType )
         .then(response => response.json())
         .then(data => {
+            
             data.forEach(folder => {
                 const div = createEvent(folder[0]);
                 console.log(div);
