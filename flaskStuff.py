@@ -44,7 +44,7 @@ def get_data_by_region(region):
     conn.close()
     return jsonify(data)
 
-@app.route('/get_data_for_pages_with_regions/<page:perPage:region>', methods=['GET'])
+@app.route('/get_data_for_pages_with_regions/<int:page>/<int:perPage>/<int:region>', methods=['GET'])
 def get_data_for_pages_with_regions(page, perPage, region):
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
@@ -53,7 +53,7 @@ def get_data_for_pages_with_regions(page, perPage, region):
     conn.close()
     return jsonify(data)
 
-@app.route('/get_data_for_pages/<page:perPage>', methods=['GET'])
+@app.route('/get_data_for_pages/<int:page>/<int:perPage>', methods=['GET'])
 def get_data_for_pages(page, perPage):
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
