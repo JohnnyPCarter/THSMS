@@ -126,6 +126,9 @@ while(1):
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
             send_data_to_server(temp, 1)
+
+            photoName = os.path.join(output_dir, 'before.jpg')
+            cv2.imwrite(photoName, roi1)
             print("event" + str(fileNumber) + " -- ROI1 -- frameCount: " + str(frameCount) )
 
             fileNumber += 1
@@ -149,6 +152,9 @@ while(1):
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
             send_data_to_server(temp, 2)
+
+            photoName = os.path.join(output_dir, 'before.jpg')
+            cv2.imwrite(photoName, roi2)
             print("event" + str(fileNumber) + " -- ROI2 -- frameCount: " + str(frameCount) )
             fileNumber += 1
 
@@ -162,6 +168,8 @@ while(1):
 
     if countdown == 1:
         out.release()
+        photoName = os.path.join(output_dir, 'after.jpg')
+        cv2.imwrite(photoName, roi1)
         print("releasing ROI1")
 
 
@@ -174,6 +182,8 @@ while(1):
 
     if countdown2 == 1:
         out2.release()
+        photoName = os.path.join(output_dir, 'after.jpg')
+        cv2.imwrite(photoName, roi2)
         print("releasing ROI2")
 
 

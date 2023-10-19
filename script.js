@@ -34,13 +34,16 @@ function createEvent(folder) {
     const eventDiv = document.createElement('div');
     eventDiv.classList.add('event');
     eventDiv.innerHTML =   
-                            '<video class="item" controls loop>' +
-                            '<source src="' + source + folder +'/video.mp4" type="video/mp4" />' +
-                            '</video>' +
+                            '<img class="item" src="'+ source + folder +'/before.png" alt="">' +
+                            '<img class="item" src="'+ source + folder +'/after.png" alt="">' +
                             '<img class="item" src="'+ source + folder +'/hour1.png" alt="">' +
                             '<img class="item" src="'+ source + folder +'/hour6.png" alt="">' +
                             '<img class="item" src="'+ source + folder +'/hour12.png" alt="">' +
-                            '<img class="item" src="'+ source + folder +'/hour24.png" alt="">';
+                            '<img class="item" src="'+ source + folder +'/hour24.png" alt="">' +
+                            '<video class="item" controls loop>' +
+                            '<source src="' + source + folder +'/video.mp4" type="video/mp4" />' +
+                            '</video>'
+                            ;
     return eventDiv;
 }
 
