@@ -79,8 +79,7 @@ function loadMore() {
   if (loading) {
     return;
   }
-
-
+  var category = document.getElementById("category").value;
 
 
     loading = true;
@@ -114,6 +113,7 @@ function loadMore() {
         })
         .catch(error => console.error(error));
     }
+    loading = false;
 }
 
 loadEvents('get_data');
