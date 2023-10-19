@@ -81,8 +81,8 @@ if not capture.isOpened():
 fgbg = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 fgbg2 = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 
-x1, y1, x2, y2 = 50, 70, 675, 400
-l1, w1, l2, w2 = 800, 100, 1400, 700
+x1, y1, x2, y2 = 40, 75, 675, 400
+l1, w1, l2, w2 = 720, 100, 1400, 700
 
 output_dir = ""
 output_dir2 = ""
@@ -177,7 +177,6 @@ while(1):
 
 
     if countdown > 0:
-        print(str(countdown) + " ROI1")
         countdown -= 1
 
     if countdown2 > 0:
@@ -191,7 +190,6 @@ while(1):
 
 
     if countdown2 > 0:
-        print(str(countdown2) + " ROI2")
         countdown2 -= 1
 
 
