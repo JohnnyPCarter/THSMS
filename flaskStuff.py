@@ -44,6 +44,23 @@ def get_data_by_region(region):
     conn.close()
     return jsonify(data)
 
+@app.route('/get_data_for_pages_with_regions/<page:perPage:region>', methods=['GET'])
+def get_data_for_pages_with_regions(page, perPage, region):
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+    cursor.execute('SELECT FileName FROM files WHERE Region = ? ORDER BY CreatedDate DESC LIMIT ?, ?;', (region, page * perPage, perPage))
+    data = cursor.fetchall()
+    conn.close()
+    return jsonify(data)
+
+@app.route('/get_data_for_pages/<page:perPage>', methods=['GET'])
+def get_data_for_pages_with_regions(page, perPage):
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+    cursor.execute('SELECT FileName FROM files ORDER BY CreatedDate DESC LIMIT ?, ?;', (page * perPage, perPage))
+    data = cursor.fetchall()
+    conn.close()
+    return jsonify(data)
 
 
 if __name__ == '__main__':

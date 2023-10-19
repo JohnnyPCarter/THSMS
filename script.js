@@ -1,4 +1,7 @@
 let source = "./event/";
+let page = 1;
+const perPage = 10;
+let loading = false;
 
 
 function categoryChanged() {
@@ -6,10 +9,16 @@ function categoryChanged() {
     // Call your function with the selected category
     // For example:
     if (category === "all") {
+      buildZone.innerHTML = ''; // clear buildZone
+      page = 1;
       loadEvents('get_data');
     } else if (category === "sink") {
+      page = 1;
+      buildZone.innerHTML = ''; // clear buildZone
       loadEvents('get_data_by_region/1');
     } else if (category === "stove-top") {
+      page = 1;
+      buildZone.innerHTML = ''; // clear buildZone
       loadEvents('get_data_by_region/2');
     }
 }
@@ -49,7 +58,7 @@ function createEvent(folder) {
 
 const buildZone = document.getElementById('build');
 function loadEvents(callType) {
-    buildZone.innerHTML = ''; // clear buildZone
+    
 
     fetch('http://192.168.1.6:5000/' + callType )
         .then(response => response.json())
@@ -63,5 +72,53 @@ function loadEvents(callType) {
         })
         .catch(error => console.error(error));
 }
+
+
+
+function loadMore() {
+  if (loading) {
+    return;
+  }
+
+  const scrollPosition = window.innerHeight + window.scrollY;
+  const bodyHeight = document.body.offsetHeight;
+
+  if (scrollPosition >= bodyHeight) {
+    loading = true;
+    if (category === "all") {
+        fetch(`/get_data_for_pages/${page}/${perPage}`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(folder => {
+            const div = createEvent(folder[0]);
+            buildZone.appendChild(div);
+            });
+            page++;
+            loading = false;
+        })
+        .catch(error => console.error(error));
+    } else {
+        if (category === "sink") {
+            region=1;
+        } else if (category === "stove-top") {
+            region=2;
+        }
+        fetch(`/get_data_for_pages_with_regions/${page}/${perPage}/${region}`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(folder => {
+            const div = createEvent(folder[0]);
+            buildZone.appendChild(div);
+            });
+            page++;
+            loading = false;
+        })
+        .catch(error => console.error(error));
+    }
+
+  }
+}
+
+window.addEventListener('scroll', loadMore);
 
 loadEvents('get_data');
