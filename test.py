@@ -84,6 +84,9 @@ fgbg2 = cv2.createBackgroundSubtractorMOG2(300, 400, True)
 x1, y1, x2, y2 = 100, 100, 700, 700
 l1, w1, l2, w2 = 800, 100, 1400, 700
 
+output_dir = ""
+output_dir2 = ""
+
 
 while(1):
     ret, frame = capture.read()
@@ -127,7 +130,7 @@ while(1):
             photoQueue24.append(timer4)
             send_data_to_server(temp, 1)
 
-            photoName = os.path.join(output_dir, 'before.jpg')
+            photoName = os.path.join(output_dir, 'before.png')
             cv2.imwrite(photoName, roi1)
             print("event" + str(fileNumber) + " -- ROI1 -- frameCount: " + str(frameCount) )
 
@@ -139,21 +142,21 @@ while(1):
         print("ROI2" + str(countRoi2))
         if countdown2 == 0:
             temp = "event" + str(fileNumber)
-            output_dir = os.path.join(DEFAULT_FILE_NAME, temp)
-            os.makedirs(output_dir, exist_ok=True)
-            video_filename = os.path.join(output_dir, 'video.mp4')
+            output_dir2 = os.path.join(DEFAULT_FILE_NAME, temp)
+            os.makedirs(output_dir2, exist_ok=True)
+            video_filename = os.path.join(output_dir2, 'video.mp4')
             out2 = cv2.VideoWriter(video_filename, fourcc, 24.0, size)
-            timer1 = (currTime, output_dir)
-            timer2 = (currTime, output_dir)
-            timer3 = (currTime, output_dir)
-            timer4 = (currTime, output_dir)
+            timer1 = (currTime, output_dir2)
+            timer2 = (currTime, output_dir2)
+            timer3 = (currTime, output_dir2)
+            timer4 = (currTime, output_dir2)
             photoQueue1.append(timer1)
             photoQueue6.append(timer2)
             photoQueue12.append(timer3)
             photoQueue24.append(timer4)
             send_data_to_server(temp, 2)
 
-            photoName = os.path.join(output_dir, 'before.jpg')
+            photoName = os.path.join(output_dir2, 'before.png')
             cv2.imwrite(photoName, roi2)
             print("event" + str(fileNumber) + " -- ROI2 -- frameCount: " + str(frameCount) )
             fileNumber += 1
@@ -168,7 +171,7 @@ while(1):
 
     if countdown == 1:
         out.release()
-        photoName = os.path.join(output_dir, 'after.jpg')
+        photoName = os.path.join(output_dir, 'after.png')
         cv2.imwrite(photoName, roi1)
         print("releasing ROI1")
 
@@ -182,7 +185,7 @@ while(1):
 
     if countdown2 == 1:
         out2.release()
-        photoName = os.path.join(output_dir, 'after.jpg')
+        photoName = os.path.join(output_dir2, 'after.png')
         cv2.imwrite(photoName, roi2)
         print("releasing ROI2")
 
