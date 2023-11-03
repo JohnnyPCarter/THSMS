@@ -1,6 +1,6 @@
 let source = "./event/";
 let page = 1;
-const perPage = 10;
+const perPage = 50;
 let loading = false;
 
 
@@ -73,7 +73,10 @@ function loadEvents(callType) {
         .catch(error => console.error(error));
 }
 
-
+function pageChange() {
+    page = document.getElementById("page-number").value;
+    loadMore();
+}
 
 function loadMore() {
   if (loading) {
@@ -89,7 +92,7 @@ function loadMore() {
         .then(data => {
             data.forEach(folder => {
             const div = createEvent(folder[0]);
-            buildZone.appendChild(div);
+            buildZone = div;
             });
             page++;
             loading = false;
@@ -106,7 +109,7 @@ function loadMore() {
         .then(data => {
             data.forEach(folder => {
             const div = createEvent(folder[0]);
-            buildZone.appendChild(div);
+            buildZone = div;
             });
             page++;
             loading = false;
@@ -114,6 +117,7 @@ function loadMore() {
         .catch(error => console.error(error));
     }
     loading = false;
+    document.getElementById("page").textContent = page;
 }
 
 loadEvents('get_data');

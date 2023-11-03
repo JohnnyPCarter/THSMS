@@ -27,6 +27,12 @@
 
     <div id="build"></div>
     <button onclick="loadMore()">Load More</button>
+    <form>
+      <label for="page-number">Page Number:</label>
+      <input type="text" id="page-number" name="page-number">
+      <button onclick="pageChange()" type="submit">Submit</button>
+    </form>
+    <label for="page-number">You're on Page <span id="page"></span>:</label>
 
 
       <script src="script.js"></script>
